@@ -1,0 +1,36 @@
+expname: tas2Rg_amip_data
+device: gpu
+seed_list: [42]
+fig_dpi: 300
+datamaker:
+    datafolder: LargeEnsemble/
+    models:
+        - CanESM5
+        - MIROC6
+        - IPSL-CM6A-LR
+        - HadGEM3-GC31-LL
+        - TaiESM1
+        - MRI-ESM2-0
+        - CESM2
+        - CNRM-CM6-1
+    data_periods:
+        - _amip_1870-2014
+        - _amip_1870-2014
+        - _amip_1870-2014
+        - _amip_1870-2014
+        - _amip_1850-2014
+        - _amip_1870-2014
+        - _amip_1870-2015
+        - _amip_1870-2014
+    detrend: false
+    n_train_val_test: [0, 0, 1]
+    input_var: tas
+    label_var: R
+    input_mask: false
+    label_mask: false
+    map_output: false
+    date_bounds: ['1870-01-01', '2014-12-31']
+    anomalies: years
+    anomaly_dates: ['1980-01-01', '1999-12-31']
+    batch_size: 32
+    args: {}

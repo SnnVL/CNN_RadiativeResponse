@@ -1,0 +1,16 @@
+expname: tas_berkeleyearth
+device: gpu
+seed_list: [42]
+fig_dpi: 300
+datamaker:
+    datafolder: Observations/
+    data_source: BerkeleyEarth
+    data_period: _1956-2024
+    input_var: tas
+    input_mask: false
+    date_bounds: ['1956-01-01', '2024-12-31']
+    anomalies: years
+    anomaly_dates: ['1995-01-01', '2014-12-31']
+    args: {}
+    detrend: false
+    multi_mem: false

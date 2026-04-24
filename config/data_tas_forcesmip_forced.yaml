@@ -1,0 +1,17 @@
+expname: tas_forcesmip_forced
+device: gpu
+seed_list: [42]
+fig_dpi: 300
+datamaker:
+    datafolder: Observations/
+    data_source: ForcesMIP
+    data_period: _forced_1950-2022
+    input_var: tas
+    input_mask: false
+    date_bounds: ['1950-01-01', '2022-12-31']
+    anomalies: years
+    anomaly_dates: ['1995-01-01', '2014-12-31']
+    args: {}
+    detrend: false
+    multi_mem: true
+    n_mems: 30

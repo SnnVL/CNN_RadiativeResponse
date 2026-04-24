@@ -1,0 +1,16 @@
+expname: tas_dcent
+device: gpu
+seed_list: [42]
+fig_dpi: 300
+datamaker:
+    datafolder: Observations/
+    data_source: DCENT-I-1.1
+    data_period: _1850-2025
+    input_var: tas
+    input_mask: false
+    date_bounds: ['1850-01-01', '2025-12-31']
+    anomalies: years
+    anomaly_dates: ['1995-01-01', '2014-12-31']
+    args: {}
+    detrend: false
+    multi_mem: false

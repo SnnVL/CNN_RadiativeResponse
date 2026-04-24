@@ -1,0 +1,75 @@
+expname: tas2Rg_amip_trend_random
+device: gpu
+seed_list: [0,1,2,3,4]
+fig_dpi: 300
+datamaker:
+    datafolder: LargeEnsemble/
+    models:
+        - CanESM5
+        - MIROC6
+        - IPSL-CM6A-LR
+        - HadGEM3-GC31-LL
+        - TaiESM1
+        - MRI-ESM2-0
+        - CESM2
+        - CNRM-CM6-1
+    data_periods:
+        - _amip_1870-2014
+        - _amip_1870-2014
+        - _amip_1870-2014
+        - _amip_1870-2014
+        - _amip_1850-2014
+        - _amip_1870-2014
+        - _amip_1870-2015
+        - _amip_1870-2014
+    detrend: false
+    n_train_val_test: [1, 0, 0]
+    split_by_years: true
+    split_periods:
+        train: 70
+        val: 35
+        test: 40
+    input_var: tas
+    label_var: R
+    input_mask: false
+    label_mask: false
+    map_output: false
+    date_bounds: ['1870-01-01', '2014-12-31']
+    anomalies: years_member
+    anomaly_dates: ['1980-01-01', '1999-12-31']
+    batch_size: 32
+    args: {}
+    load_pretrained: tas2Rg_all_trend
+    pretrained_seed: 3
+arch:
+    type: ConvNet
+    n_inputs: 1
+    circular_padding: false
+    cnn_act_funs: ['ELU', 'ELU']
+    pool_sizes: [2, 2]
+    kernel_sizes: [3, 3]
+    filters: [32, 32]
+    hiddens: [32, 16]
+    dense_act_funs: ['ELU', 'linear']
+optimizer:
+    type: Adam
+    args:
+        lr: 0.00001
+        weight_decay: 0
+        amsgrad: false
+        eps: 1.e-7
+scheduler:
+    type: MultiStepLR
+    args:
+        milestones: []
+        gamma: 1
+criterion: mse_loss
+metrics: ['r2_score', ]
+trainer:
+    max_epochs: 1000
+    save_dir: models/
+    do_validation: true
+    early_stopping:
+        args:
+            patience: 20
+            min_delta: 0

@@ -1,0 +1,28 @@
+expname: tas2Rg_amip_extended_E3SM
+device: gpu
+seed_list: [42]
+fig_dpi: 300
+datamaker:
+    datafolder: LargeEnsemble/
+    models:
+        - E3SM-2-0
+        - E3SM-2-0
+        - E3SM-2-0
+        - E3SM-2-0
+    data_periods:
+        - _HadISST-1.1_amip-F2010_1979-2022
+        - _NOAA_ERSST_V5_amip-F2010_1979-2022
+        - _NOAA-OISST-v2.1_amip-F2010_1979-2022
+        - _PCMDI_amip-F2010_1979-2022
+    detrend: false
+    n_train_val_test: [0, 0, 10]
+    input_var: tas
+    label_var: R
+    input_mask: false
+    label_mask: false
+    map_output: false
+    date_bounds: ['1879-01-01', '2022-12-31']
+    anomalies: years
+    anomaly_dates: ['1980-01-01', '1999-12-31']
+    batch_size: 32
+    args: {}

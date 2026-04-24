@@ -1,0 +1,50 @@
+expname: tas2Rg_all_trend_hptesting
+device: gpu
+seed_list: [0,1,2,3,4]
+fig_dpi: 300
+datamaker:
+    datafolder: LargeEnsemble/
+    models:
+        - CanESM5
+        - CNRM-CM6-1
+        - E3SM-2-0
+        - HadGEM3-GC31-LL
+        - MIROC6
+        - IPSL-CM6A-LR
+        - MPI11
+    data_periods:
+        - _hist+ssp245_1850-2100
+        - _hist_1850-2014
+        - _hist_1850-2014
+        - _hist+ssp245_1850-2020
+        - _hist+ssp245_1850-2100
+        - _hist+ssp245_1850-2059
+        - _hist+rcp85_1871-2099
+    detrend: false
+    n_train_val_test: [14, 3, 3]
+    input_var: tas
+    label_var: R
+    input_mask: false
+    label_mask: false
+    map_output: false
+    date_bounds: ['1871-01-01', '2014-12-31']
+    anomalies: years_member
+    anomaly_dates: ['1980-01-01', '1999-12-31']
+    batch_size: 32
+    args: {}
+    load_pretrained: false
+scheduler:
+    type: MultiStepLR
+    args:
+        milestones: []
+        gamma: 1
+criterion: mse_loss
+metrics: ['r2_score', ]
+trainer:
+    max_epochs: 1000
+    save_dir: models/
+    do_validation: true
+    early_stopping:
+        args:
+            patience: 10
+            min_delta: 0

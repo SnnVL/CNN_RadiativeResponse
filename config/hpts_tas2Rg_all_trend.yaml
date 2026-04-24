@@ -1,0 +1,114 @@
+hpt000:
+    arch:
+        type: ConvNet
+        n_inputs: 1
+        circular_padding: false
+        cnn_act_funs: ['ELU', 'ELU']
+        pool_sizes: [2, 2]
+        kernel_sizes: [3, 3]
+        filters: [32, 32]
+        hiddens: [32, 16]
+        dense_act_funs: ['ELU', 'linear']
+    optimizer:
+        type: Adam
+        args:
+            lr: 0.00001
+            weight_decay: 0
+            amsgrad: false
+            eps: 1.e-7
+    best_seed: 3
+hpt001:
+    arch:
+        type: ConvNet
+        n_inputs: 1
+        circular_padding: false
+        cnn_act_funs: ['ELU', 'ELU', 'ELU']
+        pool_sizes: [2, 2, 2]
+        kernel_sizes: [3, 3, 3]
+        filters: [32, 32, 32]
+        hiddens: [32, 16]
+        dense_act_funs: ['ELU', 'linear']
+    optimizer:
+        type: Adam
+        args:
+            lr: 0.00001
+            weight_decay: 0
+            amsgrad: false
+            eps: 1.e-7
+    best_seed: 3
+hpt002:
+    arch:
+        type: ConvNet
+        n_inputs: 1
+        circular_padding: false
+        cnn_act_funs: ['ReLU', 'ReLU']
+        pool_sizes: [2, 2]
+        kernel_sizes: [3, 3]
+        filters: [32, 32]
+        hiddens: [32, 16]
+        dense_act_funs: ['ReLU', 'linear']
+    optimizer:
+        type: Adam
+        args:
+            lr: 0.00001
+            weight_decay: 0
+            amsgrad: false
+            eps: 1.e-7
+    best_seed: 3
+hpt003:
+    arch:
+        type: ConvNet
+        n_inputs: 1
+        circular_padding: false
+        cnn_act_funs: ['ELU', 'ELU']
+        pool_sizes: [2, 2]
+        kernel_sizes: [3, 3]
+        filters: [32, 32]
+        hiddens: [16, 8]
+        dense_act_funs: ['ELU', 'linear']
+    optimizer:
+        type: Adam
+        args:
+            lr: 0.00001
+            weight_decay: 0
+            amsgrad: false
+            eps: 1.e-7
+    best_seed: 4
+hpt004:
+    arch:
+        type: ConvNet
+        n_inputs: 1
+        circular_padding: false
+        cnn_act_funs: ['ELU', 'ELU']
+        pool_sizes: [2, 2]
+        kernel_sizes: [3, 3]
+        filters: [32, 32]
+        hiddens: [32, 16]
+        dense_act_funs: ['ELU', 'linear']
+    optimizer:
+        type: Adam
+        args:
+            lr: 0.0001
+            weight_decay: 0
+            amsgrad: false
+            eps: 1.e-7
+    best_seed: 3
+hpt005:
+    arch:
+        type: ConvNet
+        n_inputs: 1
+        circular_padding: false
+        cnn_act_funs: ['ELU', 'ELU']
+        pool_sizes: [2, 2]
+        kernel_sizes: [3, 3]
+        filters: [16, 16]
+        hiddens: [32, 16]
+        dense_act_funs: ['ELU', 'linear']
+    optimizer:
+        type: Adam
+        args:
+            lr: 0.00001
+            weight_decay: 0
+            amsgrad: false
+            eps: 1.e-7
+    best_seed: 3
